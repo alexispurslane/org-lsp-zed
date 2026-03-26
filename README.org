@@ -1,0 +1,142 @@
+* org-lsp for Zed
+:PROPERTIES:
+:CUSTOM_ID: org-lsp-for-zed
+:END:
+A Zed extension that provides Language Server Protocol (LSP) support for
+Org mode files.
+
+** Overview
+:PROPERTIES:
+:CUSTOM_ID: overview
+:END:
+This extension provides an LSP client for the [[https://github.com/alexispurslane/org-lsp][org-lsp]] language server,
+adding advanced IDE features to Org mode files in Zed:
+
+- *Navigation*: Go-to-definition for =file:= and =id:= links, document
+  symbols, workspace symbols
+- *Completion*: Auto-completion for tags, file links, ID links, block
+  types, export formats
+- *Hover*: Preview link destinations without leaving your current file
+- *Formatting*: Document formatting with proper spacing and alignment
+- *Folding*: Code folding for headings and sections
+
+** Prerequisites
+:PROPERTIES:
+:CUSTOM_ID: prerequisites
+:END:
+*** 1. Install the Org Language Extension
+:PROPERTIES:
+:CUSTOM_ID: install-the-org-language-extension
+:END:
+This extension provides LSP support only. You must also install the [[https://github.com/hron/zed-org][org]]
+extension for syntax highlighting and Tree-sitter support:
+
+#+begin_example
+zed: install extension org
+#+end_example
+
+Or search for "org" in the Zed extension gallery (by hron).
+
+*** 2. Install the org-lsp Binary
+:PROPERTIES:
+:CUSTOM_ID: install-the-org-lsp-binary
+:END:
+This extension requires the [[https://github.com/alexispurslane/org-lsp][org-lsp]] binary to be installed and
+available in your PATH.
+
+*From source:*
+
+#+begin_example
+git clone https://github.com/alexispurslane/org-lsp.git
+cd org-lsp
+just install  # Installs to ~/.local/bin/org-lsp
+#+end_example
+
+Ensure =~/.local/bin= is in your PATH.
+
+*Requirements:*
+- Go 1.25.6 or later
+- =just= task runner (=cargo install just=)
+
+** Installation
+:PROPERTIES:
+:CUSTOM_ID: installation
+:END:
+This extension is not yet published in the Zed extension gallery. Install
+it as a dev extension:
+
+1. Clone this repository
+2. Build the extension: =cargo build --target wasm32-wasi=
+3. In Zed, run =zed: install dev extension=
+4. Select the =org-lsp-zed= directory
+
+** Configuration
+:PROPERTIES:
+:CUSTOM_ID: configuration
+:END:
+You can configure the LSP settings in your Zed =settings.json=:
+
+#+begin_src json
+{
+  "lsp": {
+    "org-lsp": {
+      "settings": {}
+    }
+  }
+}
+#+end_src
+
+** How It Works
+:PROPERTIES:
+:CUSTOM_ID: how-it-works
+:END:
+This extension is designed to complement the existing [[https://github.com/hron/zed-org][org]] extension
+(which provides syntax highlighting and grammar support). It:
+
+1. Detects when you open an =.org= file
+2. Checks if =org-lsp= is available in your PATH
+3. Starts the language server with stdio communication
+4. Provides all LSP features (go-to-def, completion, hover, etc.)
+
+** Troubleshooting
+:PROPERTIES:
+:CUSTOM_ID: troubleshooting
+:END:
+*"org-lsp not found in PATH"*
+
+Make sure [[https://github.com/alexispurslane/org-lsp][org-lsp]] is installed and in your PATH. You can verify by
+running:
+
+#+begin_example
+which org-lsp
+org-lsp --version
+#+end_example
+
+*No LSP features working*
+
+- Check Zed LSP logs: =zed: open log=
+- Ensure you have both the [[https://github.com/hron/zed-org][org]] extension (for language support) and
+  =org-lsp= extension installed
+
+** Development
+:PROPERTIES:
+:CUSTOM_ID: development
+:END:
+#+begin_example
+# Clone the repository
+git clone https://github.com/alexispurslane/org-lsp-zed.git
+cd org-lsp-zed
+
+# Build the extension
+cargo build --target wasm32-wasi
+
+# Install as dev extension in Zed
+# Run: zed: install dev extension and select this directory
+#+end_example
+
+** License
+:PROPERTIES:
+:CUSTOM_ID: license
+:END:
+This is free and unencumbered software released into the public domain.
+See [[./UNLICENSE][UNLICENSE]] for details.
