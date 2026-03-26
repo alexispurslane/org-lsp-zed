@@ -1,0 +1,11 @@
+id = "org-lsp"
+name = "org-lsp"
+version = "0.0.1"
+schema_version = 1
+authors = ["Alexis Purslane <alexispurslane@pm.me>"]
+description = "Language server for Org mode files (LSP support for the org extension)"
+repository = "https://github.com/alexispurslane/org-lsp-zed"
+
+[language_servers.org-lsp]
+name = "Org LSP"
+languages = ["Org"]
