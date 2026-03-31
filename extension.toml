@@ -8,7 +8,7 @@ repository = "https://github.com/alexispurslane/org-lsp-zed"
 
 [grammars.org]
 repository = "https://github.com/alexispurslane/tree-sitter-org"
-commit = "77dc8285fb2f49687de4f41d87e37de4dbb80b44"
+commit = "1bf45848c007a32061b26e93d4ab0d50423222c6"
 
 [language_servers.org-lsp]
 name = "Org LSP"
