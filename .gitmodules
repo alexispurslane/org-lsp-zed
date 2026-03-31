@@ -1,3 +1,0 @@
-[submodule "grammars/tree-sitter-org"]
-	path = grammars/tree-sitter-org
-	url = https://github.com/milisims/tree-sitter-org

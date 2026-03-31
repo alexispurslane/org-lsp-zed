@@ -7,7 +7,8 @@ description = "Org Mode support for Zed with LSP"
 repository = "https://github.com/alexispurslane/org-lsp-zed"
 
 [grammars.org]
-path = "./grammars/tree-sitter-org"
+repository = "https://github.com/alexispurslane/tree-sitter-org"
+commit = "77dc8285fb2f49687de4f41d87e37de4dbb80b44"
 
 [language_servers.org-lsp]
 name = "Org LSP"
