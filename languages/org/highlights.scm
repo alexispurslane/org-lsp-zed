@@ -40,18 +40,18 @@
 (property name: (expr) @variable (value)? @string.special)
 
 ; Simple examples, but can also match (day), (date), (time), etc.
-(timestamp "[") @link_uri
+(timestamp "[") @string
 (timestamp "<"
- (day)? @link_uri
- (date)? @link_uri
- (time)? @link_uri
- (repeat)? @link_uri
- (delay)? @link_uri
- ) @link_uri
+ (day)? @string
+ (date)? @string
+ (time)? @string
+ (repeat)? @string
+ (delay)? @string
+ ) @string
 
 
 ; Links - matches [[target]] or [[target][desc]] using the new link node type
-(link) @link_uri
+(link) @string
 
  ; Planning keywords in org-mode headings: DEADLINE, SCHEDULED, CLOCK, CLOSED
 (entry (entry_name) @keyword)
